@@ -19,7 +19,9 @@ Servo servoMotor;
 int timeToDelayInOneSecond = 1000;
 int timeToDelayInOneMinute = 60 * timeToDelayInOneSecond;
 int timeToDelayInBetweenOnOffInMinutes = 2 ;
+int timeToDelayInBetweenOnOffInSeconds = timeToDelayInBetweenOnOffInMinutes * timeToDelayInOneMinute; 
 int timeToAutomateActivationOfOnOffInMinutes = 3;
+int timeToAutomateActivationOfOnOffInSeconds = timeToAutomateActivationOfOnOffInMinutes * timeToDelayInOneMinute;
 int initialOrResetTime = 0; 
 
 // Thingspeak creditionals for servo motor
@@ -57,7 +59,7 @@ void setup() {
         initialOrResetTime++;
 
         // Updating servo motor code 180 degrees, on condition.
-        if ( initialOrResetTime == timeToAutomateActivationOfOnOffInMinutes){
+        if ( initialOrResetTime == timeToAutomateActivationOfOnOffInSeconds ){
           for ( int position = 0; position <=180; position++ ){
             servoMotor.write(position);
             delay(15);
@@ -70,7 +72,7 @@ void setup() {
           Serial.println();
 
           // Wait for delay time in between of one cycle. 
-          delay(timeToDelayInBetweenOnOffInMinutes * timeToDelayInOneMinute);
+          delay(timeToDelayInBetweenOnOffInSeconds);
 
           // Getting back servo motor to close position from open position. 
           for ( int position = 180; position >= 0; position-- ){
@@ -89,9 +91,9 @@ void setup() {
         }
 
         // Serial monitor printing statements. 
-        Serial.print("Current time in Minutes: ");
+        Serial.print("Current time in Seconds: ");
         Serial.println(initialOrResetTime);
-        Serial.print("After every ");
+        Serial.print(", After every ");
         Serial.print(timeToAutomateActivationOfOnOffInMinutes);
         Serial.print(" minutes the automatic servo motor starts rotating and ");
         Serial.print(timeToDelayInBetweenOnOffInMinutes);
@@ -131,23 +133,30 @@ void setup() {
           Serial.println(" minutes again servo motor activates. ");
           Serial.println();
 
-          // Resetting time to 0 again after one succesfull cycle.
+        // Turning off the Website click to 0 in thingspeak.
+        ThingSpeak.setField(1, 0);
+        int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
+        if (response_ServoMotor == 200) {
+          Serial.println("Successfully closed the activation of food feeding by the website.");
+        } else {
+          Serial.println("Error sending data to ThingSpeak");
+        }
+        delay(15000); // Wait for 15 seconds and again send a safety request to thingspeak to close the circuit completly.
+        ThingSpeak.setField(1, 0);
+        int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
+        if (response_ServoMotor == 200) {
+          Serial.println("Once again closed the activation of servo motor for safety purpose.");
+        } else {
+          Serial.println("Error sending data to ThingSpeak");
+        }
+
+          // Resetting time to 0 again after one successful cycle.
           initialOrResetTime = 0; 
         }
 
 
         // Delay for 1 minute after every loop 
-        delay(timeToDelayInOneMinute);
-
-
-        // Below lines are just for reference purpose. 
-        // ThingSpeak.setField(1, sensorReading);
-        // int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakApiKey_ServoMotor);
-        // if (response_ServoMotor == 200) {
-        //   Serial.println("Data sent to Thingspeak successfully");
-        // } else {
-        //   Serial.println("Error sending data to ThingSpeak");
-        // }
+        delay(timeToDelayInOneSecond);
 }
 
  
