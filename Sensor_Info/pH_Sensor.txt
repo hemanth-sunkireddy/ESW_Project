@@ -1,3 +1,5 @@
+PRECAUTIONS : 
+
 The BNC connector and the signal conversion board must be kept dry and clean, otherwise, it will affect the input impedance, resulting in an inaccurate measurement. If it is damp, it needs to be dried.
 The signal conversion board cannot be directly placed on a wet or semiconductor surface, otherwise, it will affect the input impedance, resulting in an inaccurate measurement.
 It is recommended to use the nylon pillar to fix the signal conversion board, allow a certain distance between the signal conversion board and the surface.
