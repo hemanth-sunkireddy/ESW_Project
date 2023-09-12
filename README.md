@@ -28,4 +28,16 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 ## Dissolved Oxygen
 ``` DO (mg/L) = A * (S / (1 + (B * T))) * (1 + C * P) * (1 - (D * TDS)) ```
 
+## pH Sensor Calculation:
+
+```(float)avgValue * 5.0 / 1024```: This part of the calculation is used to convert the analog reading into millivolts (mV). Here's how it works:
+
+avgValue contains the average analog reading from the pH sensor. It's multiplied by 5.0 because the Arduino's analog pins provide a voltage range of 0 to 5 volts.
+The result is divided by 1024 because the analog-to-digital converter (ADC) in the Arduino has a 10-bit resolution, which means it can represent values from 0 to ```1023 (2^10 - 1)```. Dividing by 1024 scales the reading to a voltage between 0 and 5 volts.
+So, after this part of the calculation, phValue represents the voltage in millivolts.
+
+```phValue = 3.5 * phValue```: This part of the calculation is used to convert the millivolt reading into a pH value. The factor 3.5 is likely based on the characteristics of the specific pH sensor being used. The factor is determined through calibration of the sensor.
+
+Different pH sensors may have different sensitivity values, and calibration is necessary to relate the sensor's millivolt output to the actual pH value.
+The multiplication by 3.5 is part of the calibration process. It scales the millivolt reading to the pH scale based on the sensor's characteristics.
 
