@@ -1,0 +1,6 @@
+The BNC connector and the signal conversion board must be kept dry and clean, otherwise, it will affect the input impedance, resulting in an inaccurate measurement. If it is damp, it needs to be dried.
+The signal conversion board cannot be directly placed on a wet or semiconductor surface, otherwise, it will affect the input impedance, resulting in an inaccurate measurement.
+It is recommended to use the nylon pillar to fix the signal conversion board, allow a certain distance between the signal conversion board and the surface.
+The sensitive glass bubble in the head of the pH probe should avoid touching with the hard material. Any damage or scratches will cause the electrode to fail.
+After completing the measurement, disconnect the pH probe from the signal conversion board.
+The pH probe should not be connected to the signal conversion board without the power supply for a long time.
