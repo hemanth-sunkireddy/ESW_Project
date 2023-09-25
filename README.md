@@ -20,6 +20,11 @@ Username: hemanthkumarreddysunkireddy51@gmail.com
 password: Iiits@123$
 ```
 
+## Presentations
+```
+Canva Link : https://www.canva.com/design/DAFtZB1C34U/U5yh1nVCtPhSJ0pQHYiedA/edit?utm_content=DAFtZB1C34U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+```
+
 ## Live website deployed at 
 ```
 https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
