@@ -12,16 +12,20 @@ const char* ssid = "Hemanth";
 const char* password = "12345678"; 
 
 // Servo motor conditions 
+// Red color = VCC
+// Brown color = GND
+// Orange color = PWM = 26
 #define SERVO_PIN 26
 Servo servoMotor;
 
 // Time management for servo motor. 
 int timeToDelayInOneSecond = 1000;
+int MinuteToSeconds = 60;
 int timeToDelayInOneMinute = 60 * timeToDelayInOneSecond;
-int timeToDelayInBetweenOnOffInMinutes = 2 ;
+int timeToDelayInBetweenOnOffInMinutes = 1 ;
 int timeToDelayInBetweenOnOffInSeconds = timeToDelayInBetweenOnOffInMinutes * timeToDelayInOneMinute; 
-int timeToAutomateActivationOfOnOffInMinutes = 3;
-int timeToAutomateActivationOfOnOffInSeconds = timeToAutomateActivationOfOnOffInMinutes * timeToDelayInOneMinute;
+int timeToAutomateActivationOfOnOffInMinutes = 1;
+int timeToAutomateActivationOfOnOffInSeconds = timeToAutomateActivationOfOnOffInMinutes * MinuteToSeconds;
 int initialOrResetTime = 0; 
 
 // Thingspeak creditionals for servo motor
@@ -143,8 +147,8 @@ void setup() {
         }
         delay(15000); // Wait for 15 seconds and again send a safety request to thingspeak to close the circuit completly.
         ThingSpeak.setField(1, 0);
-        int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
-        if (response_ServoMotor == 200) {
+        int response_ServoMotor2 = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
+        if (response_ServoMotor2 == 200) {
           Serial.println("Once again closed the activation of servo motor for safety purpose.");
         } else {
           Serial.println("Error sending data to ThingSpeak");
@@ -158,5 +162,3 @@ void setup() {
         // Delay for 1 minute after every loop 
         delay(timeToDelayInOneSecond);
 }
-
- 
