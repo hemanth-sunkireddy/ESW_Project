@@ -2,6 +2,8 @@
 #include <DallasTemperature.h>
 
 // Data wire is connected to GPIO 4 (you can change this pin)
+// red=vcc black=gnd yellow=gpio pin
+
 const int oneWireBus = 4;
 
 OneWire oneWire(oneWireBus);
