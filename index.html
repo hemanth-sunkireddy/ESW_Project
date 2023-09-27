@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <link rel="stylesheet" href="css/index.css">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovative Aquatic Cultivation</title>
 </head>
 
 <body>
+    <h1 id="title">Check the aquatic environment</h1>
     <h1>Control of the servo motor from the website, Click on the below button to activate the Food feeding.</h1>
     <button id="On">Activate Machine </button>
     <!-- <button id="Off">Turn off</button> -->
+    <div id="info">
+        <h3>Quality of water</h3>
+        <table style="width: 100%; font-size: 100px;">
+            <tr>
+            <th>Parameters</th>
+            <th>Measurements</th>
+            </tr>
+            <tr>
+                <td>Ph</td>
+                <td id="Ph">5</td>
+            </tr>
+            <tr><td>Turbidity</td>
+            <td id="Turb">25</td></tr>
+            <tr><td>Dissloved Oxygen</td>
+            <td>Value2</td>
+            </tr>
+            <tr><td>Temperature</td>
+                <td id="Temp">100</td>
+            </tr>
+        </table>
+
+    </div>
 </body>
 <script src="js/index.js"></script>
 

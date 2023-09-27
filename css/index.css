@@ -1,0 +1,83 @@
+/* Base styles for your page */
+body {
+
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(aquatic.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+table{
+    background-color: lime;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+#title {
+    font-size: 36px;
+}
+
+/* Button styles */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Adjust font size for smaller screens */
+    #title {
+        font-size: 24px;
+    }
+    
+    button {
+        font-size: 16px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further adjustments for even smaller screens */
+    #title {
+        font-size: 20px;
+    }
+    
+    button {
+        font-size: 14px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+}

@@ -62,3 +62,36 @@ function turnOnServoMotor() {
 //             console.error("An error occurred:", error);
 //         });
 // }
+var p=document.getElementById("Ph");
+var r=p.textContent;
+console.log(r)
+let q=Number(r)
+console.log(q)
+if(q<6){
+    p.style.backgroundColor="red"
+    alert("Change water! It became acidic")
+}
+else if(q>8){
+    p.style.backgroundColor="blue"
+    alert("Change water! It became basic")
+}
+
+var p1=document.getElementById("Turb");
+var r1=p1.textContent;
+console.log(r1)
+let q1=Number(r1)
+console.log(q1)
+if(q1>50){
+    p1.style.backgroundColor="blue"
+    alert("Water became impure. Please change it")
+}
+
+var p2=document.getElementById("Temp");
+var r2=p2.textContent;
+console.log(r2)
+let q2=Number(r2)
+console.log(q2)
+if(q2<10 || q2>40){
+    p2.style.backgroundColor="blue"
+    alert("Temperature is not suitable for life. Please change water")
+}
