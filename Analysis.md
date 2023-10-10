@@ -14,5 +14,5 @@
 
 
 ### OUR ELEVATED THOUGHTS :
-- We can implement cage on a river to sea area such that river fishes donot flow into the sea water where the pH and Salinity changes.
+- We can implement cage/ water flow barrier on a river to sea area such that river fishes donot flow into the sea water where the pH and Salinity changes.
 - 
