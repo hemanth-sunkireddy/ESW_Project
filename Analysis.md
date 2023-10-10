@@ -10,6 +10,11 @@
 - turbidity value changes when there are more number of fishes.
     - We cannot identify the turbidity accurately when there are more number of fishes.
     - so we need to tell the user to either decrease its count or increase water level
+ 
+### pH effects on Aqua Culture
+-  A major reason for adapting new tank inhabitants carefully is the possible difference in pH-value of the transported water and the tank.
+- The changes in the pH, especially for sudden changes, can prove that it is harmful or even fatal to fish.
+- Amongst the species of fish, breeding occurs only within a specific pH range
 
 
 
