@@ -15,10 +15,7 @@
 -  A major reason for adapting new tank inhabitants carefully is the possible difference in pH-value of the transported water and the tank.
   - The changes in the pH, especially for sudden changes, can prove that it is harmful or even fatal to fish.
   - Amongst the species of fish, breeding occurs only within a specific pH range
-- Correction of
-deficiency is needed so that the level is between 8.1 to 8.3
-and suggested not to change pH by more than 0.5 per day to
-limit stress on aquatic inhabitants
+- Correction of deficiency is needed so that the level is between 8.1 to 8.3 and suggested not to change pH by more than 0.5 per day to limit stress on aquatic inhabitants.
 
 
 
