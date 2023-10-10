@@ -10,3 +10,9 @@
 - turbidity value changes when there are more number of fishes.
     - We cannot identify the turbidity accurately when there are more number of fishes.
     - so we need to tell the user to either decrease its count or increase water level
+
+
+
+### OUR ELEVATED THOUGHTS :
+- We can implement cage on a river to sea area such that river fishes donot flow into the sea water where the pH and Salinity changes.
+- 
