@@ -11,9 +11,9 @@
 const char* ssid = "Hemanth";
 const char* password = "12345678";
 
-const char* thingSpeakWrite_ApiKey_pH = "T3V5SKT2D0768MCB";
-const long thingSpeakChannelID_pH = 2266014;
-const char* thingSpeakRead_ApiKey_pH = "IQ5YWGI14JAXQT6N";
+const char* thingSpeakWrite_ApiKey_pH = "8O65V0XRLIJ4XVW5";
+const long thingSpeakChannelID_pH = 2289372;
+const char* thingSpeakRead_ApiKey_pH = "7UVVZD0E712HVSIA";
 const long thingSpeakFieldNumber_pH = 2;
 
 int pH_field = 0;
@@ -73,12 +73,14 @@ void loop() {
   Serial.println(disoxy);
 
   if (ph > 6 && ph < 8) {
-    updateThingSpeak(5, 0);
+    updateThingSpeak(2, 0);
   } else {
-    updateThingSpeak(5, 1);
+    updateThingSpeak(2, 1);
   }
 
-  updateThingSpeak(2, ph);
+  updateThingSpeak(3, disoxy);
+
+  updateThingSpeak(1, ph);
 
   delay(1000);
 }
