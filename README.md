@@ -42,10 +42,12 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 - Temp and pressure are related by ionization.
 - we cannot relate turbidity with the dissolved oxygen.
 So the apparent formula is :
-``` DO = (a/pH)*(b/temp) + c```
-where assumed constants are : a = 7, b = 3.8(c), c = 9.5
 
-reference : (web)[https://www.fondriest.com/environmental-measurements/parameters/water-quality/dissolved-oxygen/]
+``` DO = (70 / (77 - pH)) * (-0.16) * temp + 12.26 ```
+
+reference : 
+1)  (web)[https://www.fondriest.com/environmental-measurements/parameters/water-quality/dissolved-oxygen/]
+2)  Temperature table from DO Manual
 
 ## pH Sensor Calculation:
 
