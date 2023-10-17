@@ -36,6 +36,7 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 
 ## Dissolved Oxygen
 ``` DO (mg/L) = A * (S / (1 + (B * T))) * (1 + C * P) * (1 - (D * TDS)) ```
+```a - (b * pH) - (c * T) - (d * Turb)```
 
 ## pH Sensor Calculation:
 
