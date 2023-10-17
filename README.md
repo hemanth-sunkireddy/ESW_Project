@@ -38,6 +38,7 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 ``` DO (mg/L) = A * (S / (1 + (B * T))) * (1 + C * P) * (1 - (D * TDS))```
 ``` DO = a - (b * pH) - (c * T) - (d * Turb)```
 - pH is inversely proportional to the dissolved oxygen.
+- Temp is inversely proportional to the dissolved oxygen.
 
 ## pH Sensor Calculation:
 
