@@ -39,6 +39,7 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 ``` DO = a - (b * pH) - (c * T) - (d * Turb)```
 - pH is inversely proportional to the dissolved oxygen.
 - Temp is inversely proportional to the dissolved oxygen.
+- Temp and pressure are related by ionization.
 - we cannot relate turbidity with the dissolved oxygen.
 So the apparent formula is :
 ``` DO = (a/pH)*(b/temp) + c```
