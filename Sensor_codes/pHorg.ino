@@ -6,6 +6,7 @@
 #include <Wire.h>
 #include <time.h>
 #include <ESP32Servo.h>
+#define TEMPERATURE 23
 
 const char* ssid = "Hemanth";
 const char* password = "12345678";
@@ -62,8 +63,14 @@ void loop() {
   Serial.print(Value);
   Serial.print(" | ");
   float voltage = Value * (3.3 / 4095.0);
-  ph = (3.3 * voltage);
+  ph = (3.3 * voltage) + 2;
+  Serial.print("pH : ");
   Serial.println(ph);
+
+  float disoxy = (70/(63+ph)) * (-0.16 * TEMPERATURE) + 12.26;
+
+  Serial.print("DisOxy : ");
+  Serial.println(disoxy);
 
   if (ph > 6 && ph < 8) {
     updateThingSpeak(5, 0);
