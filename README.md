@@ -43,7 +43,7 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 - we cannot relate turbidity with the dissolved oxygen.
 So the apparent formula is :
 ``` DO = (a/pH)*(b/temp) + c```
-where assumed constants are : a = 7, b = 300, c = 10
+where assumed constants are : a = 7, b = 27(c), c = 8.5
 
 ## pH Sensor Calculation:
 
