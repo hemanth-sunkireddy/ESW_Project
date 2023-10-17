@@ -43,7 +43,7 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 - we cannot relate turbidity with the dissolved oxygen.
 So the apparent formula is :
 ``` DO = (a/pH)*(b/temp) + c```
-where assumed constants are : a = 7, b = 10(c), c = 8.5
+where assumed constants are : a = 7, b = 3.8(c), c = 9.5
 
 reference : (web)[https://www.fondriest.com/environmental-measurements/parameters/water-quality/dissolved-oxygen/]
 
