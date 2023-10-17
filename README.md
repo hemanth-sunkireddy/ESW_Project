@@ -39,6 +39,9 @@ https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
 ``` DO = a - (b * pH) - (c * T) - (d * Turb)```
 - pH is inversely proportional to the dissolved oxygen.
 - Temp is inversely proportional to the dissolved oxygen.
+- we cannot relate turbidity with the dissolved oxygen.
+So the apparent formula is :
+``` DO = (a/pH)*(b/temp) + c```
 
 ## pH Sensor Calculation:
 
