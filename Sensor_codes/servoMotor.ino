@@ -8,6 +8,7 @@
 #include <ESP32Servo.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#define PH_VALUE 7
 
 
 // Network creditionals 
@@ -87,6 +88,12 @@ void setup() {
         Serial.print("Temperature: ");
         Serial.print(temperature);
         Serial.println(" °C");
+
+        // Code for Calculating Dissolved Oxygen 
+        float DissolvedOxygen = (70 / 63 + PH_VALUE ) * (-0.16 * (temperature - 5)) + 12.26;
+        Serial.print("Dissolved Oxygen : ");
+        Serial.print(DissolvedOxygen);
+        Serial.println(" mg/L");
 
 
         // Incrementing time according to minutes scale. 
