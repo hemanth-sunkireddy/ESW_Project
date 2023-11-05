@@ -23,7 +23,9 @@ const char* password = "12345678";
 Servo servoMotor;
 
 // Temperature sensor 
-#define ONE_WIRE_BUS 18
+// Red color = VCC
+// Black color = GND
+#define ONE_WIRE_BUS 18 // Yellow Color
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
