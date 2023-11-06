@@ -1,0 +1,40 @@
+// ESP32 code 
+
+
+#define RXp2 16
+#define TXp2 17
+
+void setup() {
+  Serial2.begin(115200, SERIAL_8N1, RXp2, TXp2); // Initialize Serial2 to communicate with the Arduino
+}
+
+void loop() {
+  // Send a message to the Arduino via Serial2
+  Serial2.println("Hello from ESP32");
+  delay(1500); // Wait for 1.5 seconds before sending another message
+}
+
+
+
+// Arduino UNO code 
+#include <SoftwareSerial.h>
+
+#define RXp2 2  // Define the pin number for the software serial RX
+#define TXp2 3  // Define the pin number for the software serial TX
+
+SoftwareSerial espSerial(RXp2, TXp2);  // Define a software serial port
+
+void setup() {
+  Serial.begin(115200);  // Initialize the Serial Monitor
+  espSerial.begin(115200);  // Initialize the software serial port for ESP32 communication
+}
+
+void loop() {
+  Serial.println("Hello Boss");  // Print a message to Serial Monitor
+  if (espSerial.available()) {
+    String dataFromESP32 = espSerial.readString();  // Read data from ESP32
+    Serial.println(dataFromESP32);  // Print received data to Serial Monitor
+  }
+  delay(1500);
+  Serial.println("Hey Hemanth!");  // Print another message to Serial Monitor
+}
