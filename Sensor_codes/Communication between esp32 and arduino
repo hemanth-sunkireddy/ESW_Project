@@ -5,10 +5,12 @@
 #define TXp2 17
 
 void setup() {
+  Serial.begin(9600);
   Serial2.begin(115200, SERIAL_8N1, RXp2, TXp2); // Initialize Serial2 to communicate with the Arduino
 }
 
 void loop() {
+  Serial.println("Hello for esp32 only not for arduino");
   // Send a message to the Arduino via Serial2
   Serial2.println("Hello from ESP32");
   delay(1500); // Wait for 1.5 seconds before sending another message
