@@ -98,8 +98,12 @@ void setup() {
         float DissolvedOxygen = (70 / 63 + PH_VALUE ) * (-0.16 * (temperature - 5)) + 12.26;
         Serial.print("Dissolved Oxygen : ");
         Serial.print(DissolvedOxygen);
-        Serial2.println(DissolvedOxygen);    // This data is sent to the arduino with baud 4800
-        Serial.println(" mg/L");
+         char buffer[10];  // Buffer to hold the converted value
+  dtostrf(DissolvedOxygen, 4, 2, buffer);  // Convert the float to a string
+  Serial2.println(buffer);  // Send the string to Arduino with baud 4800
+
+  Serial.println(" mg/L");
+
 
         // Incrementing time according to minutes scale. 
         initialOrResetTime = initialOrResetTime + 1 ;
