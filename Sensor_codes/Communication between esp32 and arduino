@@ -19,6 +19,7 @@ void loop() {
 
 
 // Arduino UNO code 
+// Arduino UNO code 
 #include <SoftwareSerial.h>
 
 #define RXp2 2  // Define the pin number for the software serial RX
@@ -32,11 +33,8 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Hello Boss");  // Print a message to Serial Monitor
   if (espSerial.available()) {
     String dataFromESP32 = espSerial.readString();  // Read data from ESP32
     Serial.println(dataFromESP32);  // Print received data to Serial Monitor
   }
-  delay(1500);
-  Serial.println("Hey Hemanth!");  // Print another message to Serial Monitor
 }
