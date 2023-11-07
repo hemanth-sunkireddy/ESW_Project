@@ -1,4 +1,4 @@
-# Innovative_Aquatic_Cultivation
+# ESW PROJECT
 
 ## Project title:  Innovative Aquatic Cultivation
 
@@ -21,7 +21,6 @@ password: Iiits@123$
 ```
 
 ## Presentatation
-Mid Evals :
 ```
 https://www.canva.com/design/DAFwGi38-_A/lzGJ421ybFxFqyTZbmun0g/edit?utm_content=DAFwGi38-_A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ```
