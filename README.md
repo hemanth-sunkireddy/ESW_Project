@@ -31,8 +31,13 @@ https://hemanth-sunkireddy.github.io/ESW_Project/
 
 
 ## Dissolved Oxygen
-- pH is inversely proportional to the dissolved oxygen.
-- Temp is inversely proportional to the dissolved oxygen.
+1. pH is inversely proportional to the dissolved oxygen.
+2. Temp is inversely proportional to the dissolved oxygen.
+3. normal values for DO is 10-20 mg/L
+4. Dissolved oxygen measure decreases in increase of fish count.
+5. Suppose we increase fishes. that means they respire more O_2.
+6. So we need to increase oxygen supply by turning ON the water fountain
+
 ![graph relation b/w DO and temp](dissolvedOxygen_temperature.jpg)
 
 ```
@@ -51,5 +56,7 @@ reference :
 4. Amongst the species of fish, breeding occurs only within a specific pH range.
 5. aquatic survival range is 5.5 to 8.5
 
-## Turbidity 
+## turbidity 
+
+## temperature
 
