@@ -34,15 +34,15 @@ https://hemanth-sunkireddy.github.io/ESW_Project/
 ## Dissolved Oxygen
 - pH is inversely proportional to the dissolved oxygen.
 - Temp is inversely proportional to the dissolved oxygen.
-- Temp and pressure are related by ionization.
-- we cannot relate turbidity with the dissolved oxygen.
-So the apparent formula is :
 
-``` DO = (70 / (77 - pH)) * (-0.16) * temp + 12.26 ```
+
+```
+Dissolved Oxygen = (70 / (77 - pH)) * (-0.16) * temp + 12.26 
+```
 
 reference : 
-1)  (web)[https://www.fondriest.com/environmental-measurements/parameters/water-quality/dissolved-oxygen/]
-2)  Temperature table from DO Manual
+[https://www.fondriest.com/environmental-measurements/parameters/water-quality/dissolved-oxygen/]
+
 
 ## pH Sensor Calculation:
 
