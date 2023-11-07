@@ -20,19 +20,12 @@ Username: hemanthkumarreddysunkireddy51@gmail.com
 password: Iiits@123$
 ```
 
-## Presentations
-```
-Canva Link : https://www.canva.com/design/DAFtZB1C34U/U5yh1nVCtPhSJ0pQHYiedA/edit?utm_content=DAFtZB1C34U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-```
+## Presentatation
 Mid Evals :
 ```
-Canva Link : https://www.canva.com/design/DAFwGi38-_A/lzGJ421ybFxFqyTZbmun0g/edit?utm_content=DAFwGi38-_A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+https://www.canva.com/design/DAFwGi38-_A/lzGJ421ybFxFqyTZbmun0g/edit?utm_content=DAFwGi38-_A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ```
 
-## Live website deployed at 
-```
-https://hemanth-sunkireddy.github.io/Innovative_Aquatic_Cultivation/
-```
 
 ## Dissolved Oxygen
 - pH is inversely proportional to the dissolved oxygen.
