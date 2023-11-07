@@ -33,7 +33,7 @@ https://hemanth-sunkireddy.github.io/ESW_Project/
 ## Dissolved Oxygen
 - pH is inversely proportional to the dissolved oxygen.
 - Temp is inversely proportional to the dissolved oxygen.
-!(dissolvedOxygen_temperature.jpg)
+![graph relation b/w DO and temp](dissolvedOxygen_temperature.jpg)
 
 ```
 Dissolved Oxygen = (70 / (77 - pH)) * (-0.16) * temp + 12.26 
