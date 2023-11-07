@@ -38,7 +38,9 @@ https://hemanth-sunkireddy.github.io/ESW_Project/
 5. Suppose we increase fishes. that means they respire more O_2.
 6. So we need to increase oxygen supply by turning ON the water fountain
 
-![graph relation b/w DO and temp](dissolvedOxygen_temperature.jpg)
+![graph relation between DO and Temperature](dissolvedOxygen_temperature.jpg)
+![graph of something1](img1)
+![graph of something2](img2)
 
 ```
 Dissolved Oxygen = (70 / (77 - pH)) * (-0.16) * temp + 12.26 
