@@ -22,33 +22,20 @@
 const char* ssid = "Hemanth";
 const char* password = "12345678"; 
 
-// Servo motor conditions 
-// Red color = VCC
-// Brown color = GND
-// Orange color = PWM = 26
-#define SERVO_PIN 26
-Servo servoMotor;
-
-
-
-// Time management for servo motor. 
-int timeToDelayInOneSecond = 2;
-int timeToDelayInBetweenOnOff = 1 ;
-int timeToAutomateActivationOfOnOff = 2;
-int initialOrResetTime = 0; 
-
-// Angel to rotate
-int initialAngleToRotate = 140 ; 
-int finalAngleToRotate = 180; 
 
 
 // Thingspeak creditionals for servo motor
-const char* thingSpeakWrite_ApiKey_ServoMotor = "T3V5SKT2D0768MCB"; 
-const long thingSpeakChannelID_ServoMotor = 2266014 ;
-const char* thingSpeakRead_ApiKey_ServoMotor = "IQ5YWGI14JAXQT6N";
-const long thingSpeakFieldNumber_ServoMotor = 1; 
-const long thingSpeakFieldNumber_Temperature = 2; 
-const long thingSpeakFieldNumber_Turbidity = 3; 
+const char* thingSpeakWrite_ApiKey_ESW_SENSORS = "G3OOXJ4BJJJTRJLV"; 
+const long thingSpeakChannelID_ESW_SENSORS = 2335414 ;
+// const char* thingSpeakRead_ApiKey_ServoMotor = "IQ5YWGI14JAXQT6N";
+const long thingSpeakFieldNumber_temperature = 1; 
+const long thingSpeakFieldNumber_temperatureAlert = 2; 
+const long thingSpeakFieldNumber_turbidity = 3; 
+const long thingSpeakFieldNumber_turbidityAlert = 4; 
+const long thingSpeakFieldNumber_pH = 3; 
+const long thingSpeakFieldNumber_pHalert = 3; 
+const long thingSpeakFieldNumber_dissolvedOxygen = 3; 
+const long thingSpeakFieldNumber_waterpump = 3; 
 
 // Calling clients of Wifi and HTTP server.
 WiFiClient client;
@@ -68,10 +55,8 @@ void setup() {
   Serial.println("Connected to WiFi");
 
   // Thingspeak connection activation.
- ThingSpeak.begin(client);
+  ThingSpeak.begin(client);
 
-  // Servo motor connection activation. 
-  servoMotor.attach(SERVO_PIN);
 
   // Temperature sensor 
   sensors.begin();
@@ -89,131 +74,40 @@ void setup() {
 
       float pHValue = ph_sensor();
 
+      int temperature_alert = 0; 
+      int turbidity_alert = 0;
+      int pH_alert = 0; 
+      int motorStatus = 0;
+      
+      if ( temperature >= 30 ){
+          temperature_alert = 1;
+      }
+      if ( turbidity >= 10 ) { 
+          turbidity_alert = 1;
+      }
+      if ( pHValue >= 9 || pHValue <= 5 ) { 
+          pH_alert = 1;
+      }
 
-        // Incrementing time according to minutes scale. 
-        initialOrResetTime = initialOrResetTime + 1 ;
-        // Serial.print("Initial time");
-        // Serial.println(initialOrResetTime);
-
-
-        // Updating servo motor code 90 degrees, on condition.
-        int condition = (initialOrResetTime == timeToAutomateActivationOfOnOff);
-        // Serial.println(condition);
-        if ( initialOrResetTime == timeToAutomateActivationOfOnOff ){
-          for ( int position = initialAngleToRotate; position <= finalAngleToRotate; position++ ){
-            servoMotor.write(position);
-            delay(15);
-          }
-
-          // Serial monitor printing statements. 
-          Serial.print("Successfully activated Servo motor by automatic activation, Food feeding started and after ");
-          Serial.print(timeToDelayInBetweenOnOff);
-          Serial.println(" seconds the servo motor closes.");
-          Serial.println();
-
-
-          // Sending data of the temperature sensor to thingspeak.
-          ThingSpeak.setField(thingSpeakFieldNumber_Temperature, temperature);
-          ThingSpeak.setField(thingSpeakFieldNumber_Turbidity, voltage);
-          int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
-          if (response_ServoMotor == 200) {
-            Serial.println("Temperature data sent to thingspeak successfully.");
-          } else {
-            Serial.println("Error sending data to ThingSpeak of temperature ");
-          }
-          // Wait for delay time in between of one cycle. 
-          delay(timeToDelayInBetweenOnOff * 1000 );
-
-          // Getting back servo motor to close position from open position. 
-          for ( int position = finalAngleToRotate; position >=  initialAngleToRotate; position-- ){
-            servoMotor.write(position);
-            delay(15);
-          }
-
-          // Serial monitor printing statements. 
-          Serial.print("Successfully closed Servo motor by automatic activation, Food feeding stopped and again activates after ");
-          Serial.print(timeToAutomateActivationOfOnOff);
-          Serial.println(" seconds again servo motor activates. ");
-          Serial.println();
-
-          // Resetting time to 0 again after one succesfull cycle.
-          initialOrResetTime = 0; 
-        }
-
-        // Serial monitor printing statements. 
-        Serial.print("Current time in Seconds: ");
-        Serial.println(initialOrResetTime);
-        Serial.print(", After every ");
-        Serial.print(timeToAutomateActivationOfOnOff);
-        Serial.print(" seconds the automatic servo motor starts rotating and ");
-        Serial.print(timeToDelayInBetweenOnOff);
-        Serial.println(" seconds later it will automatically close.");
-        Serial.println();
+      if ( dissolvedOxygen < 11 ){
+        motorStatus = 1;
+      }
+      
+      ThingSpeak.setField(thingSpeakFieldNumber_temperature, temperature);
+      ThingSpeak.setField(thingSpeakFieldNumber_temperatureAlert, temperature_alert);
+      ThingSpeak.setField(thingSpeakFieldNumber_pH, pHValue);
+      ThingSpeak.setField(thingSpeakFieldNumber_pHalert, pH_alert);
+      ThingSpeak.setField(thingSpeakFieldNumber_turbidity, turbidity);
+      ThingSpeak.setField(thingSpeakFieldNumber_turbidityAlert, turbidity_alert);
+      ThingSpeak.setField(thingSpeakFieldNumber_dissolvedOxygen, dissolvedOxygen);
+      ThingSpeak.setField(thingSpeakFieldNumber_waterpump, motorStatus);
 
 
-        // Reading the data from the Website button from thingspeak. 
-        int dataFromThingSpeakOfServoMotor = ThingSpeak.readIntField(thingSpeakChannelID_ServoMotor, thingSpeakFieldNumber_ServoMotor, thingSpeakRead_ApiKey_ServoMotor);
-        Serial.print("Data from the thingspeak, either 0 or 1, 1 means activation of servo motor, 0 means no need to activate the servo motor:-");
-        Serial.println(dataFromThingSpeakOfServoMotor);
-        Serial.println();
-        if ( dataFromThingSpeakOfServoMotor == 1){
-          for ( int position = initialAngleToRotate; position <= finalAngleToRotate; position++ ){
-            servoMotor.write(position);
-            delay(15);
-          }
-
-          // Serial monitor printing statements. 
-          Serial.print("Successfully activated Servo motor by website control, Food feeding started and after ");
-          Serial.print(timeToDelayInBetweenOnOff);
-          Serial.println(" seconds the servo motor closes.");
-          Serial.println();
-
-        // Temperature sensor sending to thingspeak.
-        ThingSpeak.setField(thingSpeakFieldNumber_Temperature, temperature);
-        // Turbidity setting field value 
-        ThingSpeak.setField(thingSpeakFieldNumber_Turbidity, voltage);
-        int response_temperature = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
-        if (response_temperature == 200) {
-          Serial.println("Temperature data sent to thingspeak successfully.");
-        } else {
-          Serial.println("Error sending data to ThingSpeak of temperature ");
-        }
-
-          // Wait for delay time in between of one cycle. 
-          delay(timeToDelayInBetweenOnOff * 1000);
-
-          // Getting back servo motor to close position from open position. 
-          for ( int position = finalAngleToRotate; position >= initialAngleToRotate; position-- ){
-            servoMotor.write(position);
-            delay(15);
-          }
-
-          // Serial monitor printing statements. 
-          Serial.print("Successfully closed Servo motor by website control, Food feeding stopped and again activates after ");
-          Serial.print(timeToAutomateActivationOfOnOff);
-          Serial.println(" seconds again servo motor activates. ");
-          Serial.println();
-
-        // Turning off the Website click to 0 in thingspeak.
-        ThingSpeak.setField(1, 0);
-        int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
-        if (response_ServoMotor == 200) {
-          Serial.println("Successfully closed the activation of food feeding by the website.");
-        } else {
-          Serial.println("Error sending data to ThingSpeak");
-        }
-        delay(15000); // Wait for 15 seconds and again send a safety request to thingspeak to close the circuit completly.
-        ThingSpeak.setField(1, 0);
-        int response_ServoMotor2 = ThingSpeak.writeFields(thingSpeakChannelID_ServoMotor, thingSpeakWrite_ApiKey_ServoMotor);
-        if (response_ServoMotor2 == 200) {
-          Serial.println("Once again closed the activation of servo motor for safety purpose.");
-        } else {
-          Serial.println("Error sending data to ThingSpeak");
-        }
-
-          // Resetting time to 0 again after one successful cycle.
-          initialOrResetTime = 0; 
-        }
-        delay(timeToDelayInOneSecond);
-
+      int response_ServoMotor = ThingSpeak.writeFields(thingSpeakChannelID_ESW_SENSORS, thingSpeakWrite_ApiKey_ESW_SENSORS);
+      if (response_ServoMotor == 200) {
+        Serial.println("Successfully sent all the details to the thingSpeak.");
+      } else {
+        Serial.println("Error sending data to ThingSpeak");
+      }
+      delay(15000); // Wait for 15 seconds and again send a safety request to thingspeak to close the circuit completly.
 }
