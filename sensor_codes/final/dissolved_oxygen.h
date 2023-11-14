@@ -2,7 +2,7 @@ float dissolved_oxygen(){
 
   // Code for Calculating Dissolved Oxygen 
         float DissolvedOxygen = (70 / (77 - PH_VALUE) ) * (-0.16 * (temperature)) + 12.26;
-        // (70 / (77 - pH)) * (-0.16) * temp + 12.26
+        // (70 / (77 - pH)) * (-0.16) * temp + 9.26
         Serial.print("Dissolved Oxygen : ");
         Serial.println(DissolvedOxygen);
         char buffer[10];  // Buffer to hold the converted value
