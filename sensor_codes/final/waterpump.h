@@ -11,11 +11,5 @@ void rotate(int delay_time)
   Serial.println("Motor Rotating");
   digitalWrite(motor1Pin1, HIGH);
   delay(delay_time);
-}
-
-void Stop(int delay_time)
-{
-  Serial.println("Motor Rotating");
   digitalWrite(motor1Pin1, LOW);
-  delay(delay_time);
 }
