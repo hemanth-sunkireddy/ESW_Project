@@ -9,18 +9,18 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #define PH_VALUE 7
-#define RXp2 16     // reciever pin
-#define TXp2 17     // transmission pin
 
 #include "temperature.h"
 #include "dissolved_oxygen.h"
 #include "ph.h"
+#include "waterpump.h"
 
 
 
 // Network creditionals 
 const char* ssid = "Hemanth";
-const char* password = "12345678"; 
+const char* password = "12345678";
+
 
 
 
@@ -44,7 +44,11 @@ HTTPClient http;
 
 void setup() {
   Serial.begin(9600);
-  Serial2.begin(4800, SERIAL_8N1, RXp2, TXp2);  // For communicating with arduino
+  // Serial2.begin(4800, SERIAL_8N1, RXp2, TXp2);  // For communicating with arduino
+
+  pinMode(motor1Pin1, OUTPUT);
+  pinMode(enable1Pin, OUTPUT);
+  ledcAttachPin(enable1Pin, pwmChannel);
 
   // Wifi setup 
   WiFi.begin(ssid, password);
@@ -57,11 +61,11 @@ void setup() {
   // Thingspeak connection activation.
   ThingSpeak.begin(client);
 
-
   // Temperature sensor 
   sensors.begin();
 
   pinMode(32, INPUT);
+
 }
 
  void loop() {
@@ -89,8 +93,9 @@ void setup() {
           pH_alert = 1;
       }
 
-      if ( dissolvedOxygen < 11 ){
-        motorStatus = 1;
+      if ( dissolvedOxygen < 5 ){
+          motorStatus = 1;
+          rotate(1000);
       }
       
       ThingSpeak.setField(thingSpeakFieldNumber_temperature, temperature);
