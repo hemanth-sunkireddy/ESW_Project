@@ -22,7 +22,7 @@ password: Iiits@123$
 
 ## Presentatation
 ```
-https://www.canva.com/design/DAFwGi38-_A/lzGJ421ybFxFqyTZbmun0g/edit?utm_content=DAFwGi38-_A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+https://www.canva.com/design/DAFzSjwGibI/BZok-QOWCb2K8k0pLJtO3Q/edit
 ```
 ## Live website deployed at
 ```
